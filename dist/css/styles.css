@@ -138,7 +138,7 @@ header {
   width: 50px;
   height: 46px;
   background-image: url("../images/icons.png");
-  background-position: -2px -2px;
+  background-position: -52px -2px;
   float: left; }
 
 .passsymbol {
@@ -148,27 +148,30 @@ header {
   width: 50px;
   height: 46px;
   background-image: url("../images/icons.png");
-  background-position: -52px -2px;
+  background-position: -2px -2px;
   float: left; }
 
 .dk-tooltip {
-  background-color: #999999;
-  position: relative;
-  top: 7px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  padding: 5px;
+  background-color: #4D4A3E;
+  font-size:15px;
+  padding: 10px;
   color: white;
-  text-align: center; }
+  text-align: center; 
+  margin: 0 auto;
+  width:358px;
+  margin-top:10px;
+  display:table;
+ }
 
 .dk-tooltip:after {
-  position: absolute;
-  top: -10px;
+  
+  position:relative;
+  top:-34px;
+  left:-50%;
   content: "";
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #999999;
-  left: 50%; }
+  border-bottom: 10px solid #4D4A3E;
+}
 
 /*# sourceMappingURL=styles.css.map */

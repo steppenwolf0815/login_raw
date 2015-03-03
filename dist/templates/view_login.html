@@ -1,0 +1,15 @@
+<header>
+	<h1>Willkommen bei Placeholder!</h1>
+</header>
+<div class="wrapper" ng-controller="loginController">
+	<header>
+	    <h2>Bitte melden Sie sich an!</h2>
+	</header>
+	<form name="form" action="" method="post" ng-submit="login()" novalidate>  
+		<div class="usersymbol"></div>
+		<input type="text" name="username" placeholder="Username" ng-model="username" unique-username required autofocus class="form-control" dktooltip="username">
+		<div class="passsymbol"></div>
+		<input type="text" name="password" placeholder="" ng-model="password" required match="verification" class="form-control" dktooltip="password">		
+		<button ng-disabled="form.$invalid" class="btn btn-primary">Anmelden</button>	
+	</form>
+</div>

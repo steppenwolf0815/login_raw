@@ -230,26 +230,27 @@ header
 	background-position:-52px -2px;
 	float:left;
 }
-.dk-tooltip
-{
-  background-color:#999999;
+.dk-tooltip {
+  background-color: $backgroundA;
+  font-size:15px;
+  padding: 10px;
+  color: white;
+  text-align: center; 
+  margin: 0 auto;
+  width:358px;
+  margin-top:10px;
+  display:table;
+ }
+
+.dk-tooltip:after {
+  
   position:relative;
-  top:7px;
-  -moz-border-radius: 5px; 
-  -webkit-border-radius: 5px; 
-  border-radius: 5px;
-  padding:5px;
-  color:white;
-  text-align:center;
+  top:-34px;
+  left:-50%;
+  content: "";
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid $backgroundA;
 }
-.dk-tooltip:after
- {
-   position:absolute;
-   top:-10px;
-   content:"";
-   border-left: 10px solid transparent;
-   border-right: 10px solid transparent;
-   border-bottom: 10px solid #999999;
-   left:50%;
-}
+
 
