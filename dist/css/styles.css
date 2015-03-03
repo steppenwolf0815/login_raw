@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial;
+  background-color: #4D4A3E; }
+
+@media only screen and (min-width: 1024px) {
+  h2 {
+    font-size: 22px;
+    font-weight: normal; } }
+@media only screen and (max-width: 1024px) and (min-width: 640px) {
+  h2 {
+    font-size: 18px;
+    font-weight: normal; } }
+@media only screen and (max-width: 640px) {
+  h2 {
+    font-size: 15px;
+    font-weight: normal; } }
+
+.wrapper {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: table;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+  border: 5px solid #636150;
+  background-color: white;
+  background-image: -webkit-gradient(linear, top, bottom, from(white), to(white));
+  background-image: -webkit-linear-gradient(top, white, white);
+  background-image: -moz-linear-gradient(top, white, white);
+  background-image: -ms-linear-gradient(top, white, white);
+  background-image: -o-linear-gradient(top, white, white);
+  background-image: linear-gradient(top, white, white);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='white', EndColorStr='white');
+  overflow: hidden; }
+  @media only screen and (max-width: 640px) {
+    .wrapper {
+      width: 80%; } }
+  @media only screen and (max-width: 1024px) and (min-width: 640px) {
+    .wrapper {
+      width: 500px; } }
+  @media only screen and (min-width: 1024px) {
+    .wrapper {
+      width: 600px; } }
+
+form {
+  width: 70%;
+  margin: 0 auto;
+  display: table; }
+
+input[type=text] {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+  border: 3px solid #636150;
+  margin: 0 auto;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  width: 70%;
+  padding: 15px;
+  padding-left: 67px;
+  display: table;
+  background-color: #D9D8D0;
+  color: #4D4A3E;
+  border: none; }
+
+input[type=text]:focus {
+  background-color: #ebebe7; }
+
+input[type=password] {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+  border: 3px solid #636150;
+  margin: 0 auto;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  width: 70%;
+  padding: 15px;
+  padding-left: 67px;
+  display: table;
+  background-color: #D9D8D0;
+  color: #4D4A3E;
+  border: none; }
+  @media only screen and (max-width: 1024px) and (min-width: 640px) {
+    input[type=password] {
+      padding: 8px; } }
+  @media only screen and (max-width: 640px) {
+    input[type=password] {
+      padding: 8px; } }
+
+input[type=password]:focus {
+  background-color: #ebebe7; }
+
+button {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+  border: 3px solid #636150;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  width: 50%;
+  padding: 20px;
+  background-color: #4180C5;
+  color: aliceblue;
+  font-size: 15px;
+  cursor: pointer;
+  display: table;
+  color: white;
+  background-color: #B40000;
+  border: none; }
+  @media only screen and (max-width: 1024px) and (min-width: 640px) {
+    button {
+      padding: 10px; } }
+  @media only screen and (max-width: 640px) {
+    button {
+      padding: 10px;
+      font-size: 12px; } }
+
+button:hover {
+  background-color: #e70000; }
+
+header {
+  padding: 15px;
+  background-color: #B40000;
+  color: white; }
+
+.usersymbol {
+  position: relative;
+  top: 46px;
+  left: 22px;
+  width: 50px;
+  height: 46px;
+  background-image: url("../images/icons.png");
+  background-position: -2px -2px;
+  float: left; }
+
+.passsymbol {
+  position: relative;
+  top: 46px;
+  left: 22px;
+  width: 50px;
+  height: 46px;
+  background-image: url("../images/icons.png");
+  background-position: -52px -2px;
+  float: left; }
+
+.dk-tooltip {
+  background-color: #999999;
+  position: relative;
+  top: 7px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  text-align: center; }
+
+.dk-tooltip:after {
+  position: absolute;
+  top: -10px;
+  content: "";
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #999999;
+  left: 50%; }
+
+/*# sourceMappingURL=styles.css.map */

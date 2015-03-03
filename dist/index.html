@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html ng-app="login">
+<head>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="js/angular.js"></script>
+	<script src="js/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="js/script.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+	<h1>Willkommen bei Placeholder!</h1>
+</header>
+<div class="wrapper" ng-controller="loginController">
+	<header>
+	    <h2>Bitte melden Sie sich an!</h2>
+	</header>
+	<form name="form" action="" method="post" ng-submit="login()" novalidate>  
+		<div class="usersymbol"></div>
+		<input type="text" name="name" placeholder="Username" ng-model="username" unique-username required autofocus class="form-control" tooltip="username">
+		<div class="passsymbol"></div>
+		<input type="text" name="password" placeholder="" ng-model="password" required match="verification" class="form-control" tooltip="password">		
+		<button ng-disabled="form.$invalid" class="btn btn-primary">Anmelden</button>
+	</form>
+</div>
+</body>
+</html>
+
+

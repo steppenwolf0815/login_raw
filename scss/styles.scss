@@ -1,0 +1,255 @@
+
+//Devices
+$smallDisplay: 640px;
+$largeDisplay: 1024px;
+//Borders
+$borderColorPassive: #636150;
+$borderColorActive: #B40000;
+//Text
+$invertTextColor: white;
+$textColor: #4D4A3E;
+//Backgrounds
+$headerColor:#B40000;
+$inputBackgroundPassive:#D9D8D0;
+$backgroundA: #4D4A3E;
+$backgroundB: white;
+//Path
+$imagepath:'../images/';
+
+
+@mixin respond-to($media) 
+{
+  @if $media == smallDisplay 
+  {
+    @media only screen and (max-width: $smallDisplay) 
+    { 
+      @content; 
+    }
+  }
+  @else if $media == mediumDisplay
+  {
+    @media only screen and (max-width: $largeDisplay) and (min-width: $smallDisplay)
+    { 
+      @content; 
+    }
+  }
+  @else if $media == largeDisplay 
+  {
+    @media only screen and (min-width: $largeDisplay) 
+    { 
+      @content; 
+    }
+  }
+}
+
+@mixin border($radius, $width, $color) 
+{
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+  
+  border: $width solid $color;
+}
+
+@mixin linear-gradient($fromColor, $toColor)
+{
+  background-color: $toColor;
+  background-image: -webkit-gradient(linear, top, bottom, from($fromColor), to($toColor));
+  background-image: -webkit-linear-gradient(top, $fromColor, $toColor); 
+  background-image:    -moz-linear-gradient(top, $fromColor, $toColor); 
+  background-image:     -ms-linear-gradient(top, $fromColor, $toColor);
+  background-image:      -o-linear-gradient(top, $fromColor, $toColor); 
+  background-image:         linear-gradient(top, $fromColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+body
+{
+  margin:0;
+  padding:0;
+  font-family: Helvetica, Arial;  
+  background-color:$backgroundA;
+}
+h2
+{
+  @include respond-to(largeDisplay) 
+  { 
+      font-size:22px;
+      font-weight:normal;
+  }
+  @include respond-to(mediumDisplay) 
+  { 
+      font-size:18px;
+      font-weight:normal;
+  }
+  @include respond-to(smallDisplay) 
+  { 
+      font-size:15px;
+      font-weight:normal;
+  }
+  
+}
+
+.wrapper 
+{
+  margin:0 auto;
+  margin-top:20px;
+	display:table;
+
+  @include border(0px, 5px, $borderColorPassive); 
+  @include linear-gradient( $backgroundB, $backgroundB);
+  @include respond-to(smallDisplay) 
+  { 
+      width: 80%;
+  }
+  @include respond-to(mediumDisplay) 
+  { 
+      width:500px;
+  }
+  @include respond-to(largeDisplay) 
+  { 
+      width: 600px;
+  }
+  overflow:hidden;
+}
+
+form
+{
+  width:70%;
+	margin:0 auto;
+	display:table;
+}
+
+input[type=text]
+{
+  @include border(0px, 3px, $borderColorPassive); 
+  margin:0 auto;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	width:70%;
+	padding: 15px;
+	padding-left:67px;
+	display:table;
+	background-color: $inputBackgroundPassive;
+  color: $textColor;
+  border:none;
+}
+
+input[type=text]:focus 
+{
+  background-color:lighten($inputBackgroundPassive, 8%);
+}
+
+input[type=password]
+{
+  @include border(0px, 3px, $borderColorPassive); 
+  margin:0 auto;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	width:70%;
+	padding: 15px;
+	padding-left:67px;
+	display:table;
+  background-color: $inputBackgroundPassive;
+  color: $textColor;
+  @include respond-to(mediumDisplay) 
+  { 
+      padding:8px;
+  }
+  @include respond-to(smallDisplay) 
+  { 
+      padding:8px;
+  }
+  border:none;
+}
+
+input[type=password]:focus
+{
+  background-color:lighten($inputBackgroundPassive, 8%);
+}
+
+button
+{
+  @include border(0px, 3px, $borderColorPassive); 
+  margin: 0 auto;
+  margin-bottom:20px;
+  margin-top:30px;
+	width:50%;
+	padding: 20px;
+	background-color: #4180C5;
+	color: aliceblue;
+	font-size:15px;
+	cursor:pointer;
+	display:table;
+	color:$invertTextColor;
+  background-color: $headerColor;
+  @include respond-to(mediumDisplay) 
+  { 
+      padding:10px;
+  }
+  @include respond-to(smallDisplay) 
+  { 
+      padding:10px;
+      font-size:12px;
+  }
+  border:none;
+
+}
+
+button:hover
+{
+   background-color: lighten( $headerColor, 10% )
+}
+
+header
+{
+   padding: 15px;
+   background-color: $headerColor;
+   color: $invertTextColor;
+}
+
+.usersymbol
+{
+	position:relative;
+	top:46px;
+	left:22px;
+	width:50px;
+	height:46px;
+	background-image:url($imagepath + 'icons.png');
+	background-position:-2px -2px;
+	float:left;
+}
+.passsymbol
+{
+	position:relative;
+	top:46px;
+	left:22px;
+	width:50px;
+	height:46px;
+	background-image:url($imagepath + 'icons.png');
+	background-position:-52px -2px;
+	float:left;
+}
+.dk-tooltip
+{
+  background-color:#999999;
+  position:relative;
+  top:7px;
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px; 
+  border-radius: 5px;
+  padding:5px;
+  color:white;
+  text-align:center;
+}
+.dk-tooltip:after
+ {
+   position:absolute;
+   top:-10px;
+   content:"";
+   border-left: 10px solid transparent;
+   border-right: 10px solid transparent;
+   border-bottom: 10px solid #999999;
+   left:50%;
+}
+
