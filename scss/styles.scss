@@ -1,22 +1,22 @@
-
 //Devices
-$smallDisplay: 640px;
+$smallDisplay: 500px;
 $largeDisplay: 1024px;
 //Borders
 $borderColorPassive: #636150;
-$borderColorActive: #B40000;
+$borderColorActive: #D54604;
 //Text
+$fontFamily: Helvetica, Arial;
 $invertTextColor: white;
 $textColor: #4D4A3E;
 //Backgrounds
-$headerColor:#B40000;
+$headerColor:#D54604;
 $inputBackgroundPassive:#D9D8D0;
 $backgroundA: #4D4A3E;
 $backgroundB: white;
 //Path
-$imagepath:'../images/';
+$spriteSheet:'../images/icons.png';
 
-
+//Responsive handler
 @mixin respond-to($media) 
 {
   @if $media == smallDisplay 
@@ -42,6 +42,7 @@ $imagepath:'../images/';
   }
 }
 
+//Prefixing border
 @mixin border($radius, $width, $color) 
 {
   -webkit-border-radius: $radius;
@@ -52,6 +53,16 @@ $imagepath:'../images/';
   border: $width solid $color;
 }
 
+//the small triangle for the tooltip
+@mixin dreieck($color) 
+{
+   content: "";
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid $color
+}
+
+//Prefixing is no fun at all
 @mixin linear-gradient($fromColor, $toColor)
 {
   background-color: $toColor;
@@ -67,24 +78,43 @@ body
 {
   margin:0;
   padding:0;
-  font-family: Helvetica, Arial;  
+  font-family: $fontFamily;  
   background-color:$backgroundA;
 }
 h2
 {
   @include respond-to(largeDisplay) 
   { 
-      font-size:22px;
+      font-size:20px;
       font-weight:normal;
   }
   @include respond-to(mediumDisplay) 
   { 
-      font-size:18px;
+      font-size:16px;
       font-weight:normal;
   }
   @include respond-to(smallDisplay) 
   { 
-      font-size:15px;
+      font-size:14px;
+      font-weight:normal;
+  }
+  
+}
+h1
+{
+  @include respond-to(largeDisplay) 
+  { 
+      font-size:25px;
+      font-weight:normal;
+  }
+  @include respond-to(mediumDisplay) 
+  { 
+      font-size:22px;
+      font-weight:normal;
+  }
+  @include respond-to(smallDisplay) 
+  { 
+      font-size:20px;
       font-weight:normal;
   }
   
@@ -104,35 +134,47 @@ h2
   }
   @include respond-to(mediumDisplay) 
   { 
-      width:500px;
+      width:400px;
   }
   @include respond-to(largeDisplay) 
   { 
-      width: 600px;
+      width: 400px;
   }
   overflow:hidden;
 }
 
 form
 {
-  width:70%;
-	margin:0 auto;
-	display:table;
+  position:relative;
+  width: 80%;
+  margin: 0 auto ;
+  display: table;
+  padding:20px;
 }
-
+.formelement {
+  position:relative;
+  margin:15px;
+  @include respond-to(smallDisplay) 
+  {
+      left:-10px;
+  }
+}
 input[type=text]
 {
-  @include border(0px, 3px, $borderColorPassive); 
+  background-color: $inputBackgroundPassive;
+  color: $textColor;
+  width:70%;
   margin:0 auto;
-	margin-bottom: 0px;
-	margin-top: 0px;
-	width:70%;
 	padding: 15px;
 	padding-left:67px;
-	display:table;
-	background-color: $inputBackgroundPassive;
-  color: $textColor;
-  border:none;
+	border:none;
+  @include respond-to(smallDisplay) 
+  { 
+      width: 70%;
+    	padding-left: 34%px;
+    	padding-right:10px;
+  }
+  display:table;
 }
 
 input[type=text]:focus 
@@ -142,25 +184,21 @@ input[type=text]:focus
 
 input[type=password]
 {
-  @include border(0px, 3px, $borderColorPassive); 
+  background-color: $inputBackgroundPassive;
+  color: $textColor;
   margin:0 auto;
-	margin-bottom: 0px;
-	margin-top: 10px;
 	width:70%;
 	padding: 15px;
 	padding-left:67px;
-	display:table;
-  background-color: $inputBackgroundPassive;
-  color: $textColor;
-  @include respond-to(mediumDisplay) 
-  { 
-      padding:8px;
-  }
+  border:none;
   @include respond-to(smallDisplay) 
   { 
-      padding:8px;
+      width: 70%;
+    	padding-left: 34%px;
+    	padding-right:10px;
   }
-  border:none;
+  display:table;
+  
 }
 
 input[type=password]:focus
@@ -170,28 +208,17 @@ input[type=password]:focus
 
 button
 {
-  @include border(0px, 3px, $borderColorPassive); 
+  color:$invertTextColor;
+  background-color: $headerColor;
   margin: 0 auto;
-  margin-bottom:20px;
-  margin-top:30px;
-	width:50%;
-	padding: 20px;
-	background-color: #4180C5;
-	color: aliceblue;
+  margin-top:20px;
+	width:90%;
+	padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight:normal;
 	font-size:15px;
 	cursor:pointer;
 	display:table;
-	color:$invertTextColor;
-  background-color: $headerColor;
-  @include respond-to(mediumDisplay) 
-  { 
-      padding:10px;
-  }
-  @include respond-to(smallDisplay) 
-  { 
-      padding:10px;
-      font-size:12px;
-  }
   border:none;
 
 }
@@ -210,47 +237,53 @@ header
 
 .usersymbol
 {
-	position:relative;
-	top:46px;
-	left:22px;
-	width:50px;
-	height:46px;
-	background-image:url($imagepath + 'icons.png');
-	background-position:-2px -2px;
-	float:left;
+	position:absolute;
+  top:0px;
+  width: 50px;
+  height: 46px;
+  background-image: url($spriteSheet);
+  background-position: -52px -2px;
+  float: left;
 }
 .passsymbol
 {
-	position:relative;
-	top:46px;
-	left:22px;
-	width:50px;
-	height:46px;
-	background-image:url($imagepath + 'icons.png');
-	background-position:-52px -2px;
-	float:left;
+	position:absolute;
+  top:0px;
+  width: 50px;
+  height: 46px;
+  background-image: url($spriteSheet);
+  background-position: -2px -2px;
+  float: left;
 }
 .dk-tooltip {
+  position:relative;
   background-color: $backgroundA;
-  font-size:15px;
+  font-size: 13px;
   padding: 10px;
-  color: white;
-  text-align: center; 
+  color: $backgroundB;
+  text-align: center;
   margin: 0 auto;
-  width:358px;
-  margin-top:10px;
-  display:table;
+  width: 92%;
+  margin-top: 10px;
+  display: table;
+   @include respond-to(smallDisplay) 
+  {
+    width: 100%;
+  	padding: 8px;
+  }
  }
 
 .dk-tooltip:after {
   
-  position:relative;
-  top:-34px;
-  left:-50%;
-  content: "";
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid $backgroundA;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  @include dreieck($backgroundA);
+  
 }
 
+.ui-dialog
+{
+  @include border(0px, 5px, $borderColorPassive); 
+}
 

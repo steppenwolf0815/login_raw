@@ -8,15 +8,16 @@ module.exports=function(grunt)
 		  {
 		    files: [
 		      
-		      {expand: true, cwd:'bower_components/jquery/dist/', src: ['**/*.js'], dest: 'dist/js/'},
-		      {expand: true, cwd:'bower_components/angular/', src: ['**/*.js'], dest: 'dist/js/'},
-		      {expand: true, cwd:'bower_components/bootstrap/dist/js/', src: ['**/*.js'], dest: 'dist/js/'},
-		      {expand: true, cwd:'bower_components/bootstrap/dist/fonts/', src: ['**'], dest: 'dist/fonts/'},
-		      {expand: true, cwd:'bower_components/bootstrap/dist/css/', src: ['**'], dest: 'dist/css/'},
+		      {expand: true, cwd:'html/', src: ['index.html'], dest: 'dist/'},
+		      {expand: true, cwd:'bower_components/jquery/dist/', src: ['jquery.min.js'], dest: 'dist/js/'},
+		      {expand: true, cwd:'bower_components/jquery-ui/', src: ['jquery-ui.min.js'], dest: 'dist/js/'},
+		      {expand: true, cwd:'bower_components/angular/', src: ['angular.min.js'], dest: 'dist/js/'},
+		      {expand: true, cwd:'bower_components/angular-route/', src: ['angular-route.min.js'], dest: 'dist/js/'},
 		      {expand: true, cwd:'templates/', src: ['**'], dest: 'dist/templates/'},
 		      {expand: true, cwd:'js/', src: ['**'], dest: 'dist/js/'},
 		      {expand: true, cwd:'css/', src: ['**'], dest: 'dist/css/'},
-		      {expand: true, cwd:'images/', src: ['**'], dest: 'dist/images/'}
+		      {expand: true, cwd:'images/', src: ['**'], dest: 'dist/images/'},
+		      {expand: true, cwd:'dist/', src: ['**'], dest: '../../Dokumente und Einstellungen/klon/Desktop/miniweb-win32-20130309/miniweb/htdocs/dist_raw'}
 		    ],
 		  },
 		},
@@ -30,17 +31,8 @@ module.exports=function(grunt)
 			  }
 			}
 		},
-		concat: 
-		{
-			dist: 
-			{
-			  src: ['src/intro.js', 'src/project.js', 'src/outro.js'],
-			  dest: 'dist/built.js',
-			},
-		},
 	});
 
-	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 

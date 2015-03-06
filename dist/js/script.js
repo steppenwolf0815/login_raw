@@ -1,9 +1,20 @@
+/*
+* Config variables should be in a config file
+* 
+*/
 var template_path="templates/";
-var app = angular.module("login", ['ngRoute']);
 
-	app
+/*
+* The angular module for the app
+* 
+*/
+var app = angular.module("login", ['ngRoute']);
 	
-	.config(function($routeProvider) 
+	/*
+	* Route Provider provides routes ;)
+	* 
+	*/
+	app.config(function($routeProvider) 
 	{
 		$routeProvider
 		.when('/restricted', 
@@ -20,29 +31,72 @@ var app = angular.module("login", ['ngRoute']);
 		});
 	})
 
-	//Controller
-	.controller("loginController", [ '$scope', '$http', '$sce', '$interval', function($scope, $http, $sce, $interval) 
+	/*
+	* Controller for the login template
+	* 
+	*/
+	.controller("loginController", [ '$rootScope', '$scope', '$http', '$sce', '$interval', '$location', function($rootScope, $scope, $http, $sce, $interval, $location) 
 	{
 		$scope.submitted = false;
 		$scope.loggedIn=false;
-		
-		
+
+		/*
+		* Handles the login
+		* 
+		*/
 		$scope.login = function () 
 		{
  			if ( $scope.form.$valid && $scope.loginRequest() ) 
 			{
 				$scope.navigate('restricted');
 				$scope.loggedIn=true;
-			} 
-			else 
+				$rootScope.loggedIn=true;
+			}else 
 			{
+				$scope.showErrorMsg('Fehler','Der Benutzername oder das Passwort sind falsch!');
 				$scope.loggedIn=false;
+				$rootScope.loggedIn=false;
 			}
 		}
 		
+		/*
+		* Quick and dirty -> shows a modal errormessage
+		* 
+		*/
+		$scope.showErrorMsg = function( title, message)
+		{
+			$('<div></div>')
+			.appendTo('.wrapper')
+			.addClass('message')
+			.attr('title',title)
+			.html( message )
+			.dialog(
+            {
+				modal: true,
+				buttons: 
+	            {
+	            	Ok: function() 
+	            	{
+			            $( this ).dialog( "close" );
+			            $( this ).remove();
+		            }
+            	}
+        	});
+		}
+
+		/*
+		* [DUMMY] checks the validity of the the credentials  
+		* To Do: XSS - Sanitisation and request
+		*/
 		$scope.loginRequest = function()
 		{
-			return true;
+			if($scope.username == "user" && $scope.password == "pass132")
+			{
+				return true;
+			}else
+			{
+				return false;
+			}
 		}
 		
 		$scope.navigate = function ( to )
@@ -51,14 +105,27 @@ var app = angular.module("login", ['ngRoute']);
 		}
 		
 	}])
+
+	.controller("restrictedController", [ '$rootScope', '$location', function($rootScope, $location)
+	{
+		//check if User is really logged in
+		if(!$rootScope.loggedIn)
+		{
+			$location.url( "" );
+		}
+	}])
 	
+	/*
+	* Appends the tooltip-template to the focused input
+	* 
+	*/
 	.directive('dktooltip', ['$window', function ($window) 
 	{
 		return {
 
 		  templateUrl: function(elem, attr)
 		  {
-			  return 'templates/tooltip_'+attr.dktooltip+'.html';
+			  return template_path + 'tooltip_'+attr.dktooltip+'.html';
 		  },
 		  link:function(scope, element, attrs) 
 		  {
