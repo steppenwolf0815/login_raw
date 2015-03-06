@@ -16,8 +16,7 @@ module.exports=function(grunt)
 		      {expand: true, cwd:'templates/', src: ['**'], dest: 'dist/templates/'},
 		      {expand: true, cwd:'js/', src: ['**'], dest: 'dist/js/'},
 		      {expand: true, cwd:'css/', src: ['**'], dest: 'dist/css/'},
-		      {expand: true, cwd:'images/', src: ['**'], dest: 'dist/images/'},
-		      {expand: true, cwd:'dist/', src: ['**'], dest: '../../Dokumente und Einstellungen/klon/Desktop/miniweb-win32-20130309/miniweb/htdocs/dist_raw'}
+		      {expand: true, cwd:'images/', src: ['**'], dest: 'dist/images/'}
 		    ],
 		  },
 		},
